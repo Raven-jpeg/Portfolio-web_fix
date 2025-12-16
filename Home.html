@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raven's Diary</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="Home.html">
+    <img src="images/logo_web.png" alt="Raven's Diary Logo" class="site-logo">
+  </a>
+
+  <nav>
+    <a href="Home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="news-box">
+    <h2>Greetings!</h2>
+    <p>
+      Welcome to Raven's portfolio! Being creative is a big aspect of my life,
+      and now you can explore my work while also expressing yourself on the drawing pad.
+    </p>
+  </section>
+
+  <section class="drawing-section">
+    <canvas id="drawing-pad" width="500" height="400"></canvas>
+
+    <div class="image-wrapper">
+      <img src="images/chiikawa.jpg" alt="Side Image" class="side-image">
+
+      <div class="drawing-controls">
+        <div class="brush-colors">
+          <div class="brush-color color-pink" data-color="#ffb6c1"></div>
+          <div class="brush-color color-red" data-color="#ff7f7f"></div>
+          <div class="brush-color color-blue" data-color="#a3c4f3"></div>
+          <div class="brush-color color-green" data-color="#b6fbc5"></div>
+          <div class="brush-color color-yellow" data-color="#fff8b5"></div>
+          <div class="brush-color color-purple" data-color="#d7baff"></div>
+        </div>
+
+        <label for="brush-size">Brush Size:</label>
+        <select id="brush-size">
+          <option value="2">2 px</option>
+          <option value="4" selected>4 px</option>
+          <option value="6">6 px</option>
+          <option value="8">8 px</option>
+          <option value="10">10 px</option>
+        </select>
+
+        <button onclick="clearCanvas()">Clear</button>
+        <button onclick="saveCanvas()">Save as Image</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Raven's Diary
+</footer>
+
+<script>
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll("nav a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
+  const canvas = document.getElementById('drawing-pad');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  let brushColor = '#ffb6c1';
+  const sizePicker = document.getElementById('brush-size');
+
+  document.querySelectorAll('.brush-color').forEach(circle => {
+    circle.addEventListener('click', () => {
+      brushColor = circle.dataset.color;
+    });
+  });
+
+  canvas.addEventListener('mousedown', e => { drawing = true; draw(e); });
+  canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+  canvas.addEventListener('mouseleave', () => { drawing = false; ctx.beginPath(); });
+  canvas.addEventListener('mousemove', draw);
+
+  function draw(e) {
+    if (!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineWidth = sizePicker.value;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = brushColor;
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  }
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function saveCanvas() {
+    const link = document.createElement('a');
+    link.download = 'drawing.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  }
+</script>
+
+</body>
+</html>
