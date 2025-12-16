@@ -186,8 +186,10 @@ canvas {
 .portfolio-layout {
   display: flex;
   gap: 30px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; 
+  align-items: flex-start; 
 }
+
 
 .left-panel {
   width: 35%;
@@ -225,17 +227,21 @@ canvas {
   text-decoration: underline;
 }
 
+
 .right-panel {
   width: 65%;
   max-height: 520px;
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 10px;
+  background: rgba(255, 240, 246, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
 .art-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
   gap: 15px;
 }
 
@@ -252,6 +258,7 @@ canvas {
   transform: scale(1.05);
 }
 
+/* SCROLLBAR */
 .right-panel::-webkit-scrollbar {
   width: 10px;
 }
@@ -270,6 +277,19 @@ canvas {
 .right-panel::-webkit-scrollbar-thumb:hover {
   background: #ff99c1;
 }
+
+
+@media (max-width: 1000px) {
+  .portfolio-layout {
+    flex-wrap: wrap; 
+  }
+  .left-panel, .right-panel {
+    width: 100%;
+  }
+  .right-panel {
+    max-height: none;
+  }
+
 
 .contact-layout {
   display: flex;
