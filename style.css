@@ -187,9 +187,7 @@ canvas {
 .portfolio-layout {
   display: flex;
   gap: 30px;
-  flex-wrap: nowrap; 
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .left-panel {
@@ -230,13 +228,10 @@ canvas {
 
 .right-panel {
   width: 65%;
-  max-height: calc(100vh - 120px); 
+  max-height: 520px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 15px;
-  background: rgba(255, 240, 246, 0.85);
-  border-radius: 20px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  padding-right: 10px;
 }
 
 .art-grid {
@@ -376,3 +371,4 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
+
