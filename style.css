@@ -1,4 +1,4 @@
-/* ===== GENERAL ===== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,7 +16,6 @@ a {
   text-decoration: none;
 }
 
-/* ===== HEADER ===== */
 .site-header {
   background: rgba(255, 154, 203, 0.85);
   text-align: center;
@@ -55,7 +54,7 @@ nav a.active {
   box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
 }
 
-/* ===== CONTAINER ===== */
+
 .container {
   max-width: 1100px;
   margin: 40px auto;
@@ -65,7 +64,6 @@ nav a.active {
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-/* ===== NEWS BOX ===== */
 .news-box {
   text-align: center;
   background: rgba(255, 240, 246, 0.6);
@@ -78,7 +76,6 @@ nav a.active {
   color: #ff6fb1;
 }
 
-/* ===== DRAWING SECTION ===== */
 .drawing-section {
   display: flex;
   gap: 20px;
@@ -138,7 +135,6 @@ canvas {
 .color-yellow { background: #fff8b5; }
 .color-purple { background: #d7baff; }
 
-/* ===== ABOUT SECTION ===== */
 .about-section {
   display: flex;
   flex-wrap: wrap;
@@ -187,7 +183,6 @@ canvas {
   margin-top: 0;
 }
 
-/* ===== PORTFOLIO SECTION ===== */
 .portfolio-layout {
   display: flex;
   gap: 30px;
@@ -276,7 +271,6 @@ canvas {
   background: #ff99c1;
 }
 
-/* ===== CONTACT SECTION ===== */
 .contact-layout {
   display: flex;
   gap: 30px;
@@ -353,7 +347,6 @@ canvas {
   to { opacity: 1; }
 }
 
-/* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 20px;
@@ -363,7 +356,6 @@ footer {
   box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .portfolio-layout, .drawing-section, .about-section, .contact-layout {
     flex-direction: column;
@@ -378,4 +370,3 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
-
